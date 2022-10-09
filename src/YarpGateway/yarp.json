@@ -1,0 +1,37 @@
+{
+  "ReverseProxy": {
+    "Routes": {
+      "Identity Service": {
+        "ClusterId": "identityCluster",
+        "Match": {
+          "Path": "/api/identity/{**everything}"
+        }
+      },
+      "Ordering Service": {
+        "ClusterId": "orderingCluster",
+        "Match": {
+          "Path": "/api/ordering/{**everything}"
+        }
+      }
+    },
+    "Clusters": {
+      "identityCluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "http://localhost:7711"
+          }
+        }
+      },
+      "orderingCluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "http://localhost:7721"
+          }
+          //"destination2": {
+          //  "Address": "http://localhost:7722"
+          //}
+        }
+      }
+    }
+  }
+}
